@@ -160,6 +160,19 @@ body {
     background: #a0aec0;
 }
 
+.empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 200px;
+    color: #94a3b8;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    padding: 40px;
+}
+
 .patient-tasks.drag-over {
     background: linear-gradient(135deg, #e7f5fe 0%, #f5e7fe 100%);
     border-color: #a8d8ea;
@@ -332,6 +345,10 @@ body {
     }
     
     #printButton {
+        display: none;
+    }
+    
+    .empty-state {
         display: none;
     }
 }

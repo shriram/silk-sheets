@@ -9,13 +9,15 @@
 <body>
     <div class="container">
         <div class="task-library">
-            <h2>Task Library</h2>
+            <h2>Library</h2>
             <input type="text" id="search" placeholder="Search tasks...">
             <div id="taskList" class="task-list"></div>
         </div>
         <div class="patient-zone">
-            <div id="patientTasks" class="patient-tasks"></div>
-            <button id="printButton">Print Task Sheet</button>
+            <div id="patientTasks" class="patient-tasks">
+                <div class="empty-state">Drag items here from the library to build your sheet</div>
+            </div>
+            <button id="printButton">Print</button>
         </div>
     </div>
     <script src="data/tasks.js"></script>

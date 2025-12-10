@@ -111,6 +111,12 @@ function handleDrop(e) {
 function addTaskToPatientSheet(task) {
     const patientTasks = document.getElementById('patientTasks');
     
+    // Remove empty state if it exists
+    const emptyState = patientTasks.querySelector('.empty-state');
+    if (emptyState) {
+        emptyState.remove();
+    }
+    
     const taskElement = document.createElement('div');
     taskElement.className = 'patient-task';
     taskElement.innerHTML = `
@@ -119,11 +125,26 @@ function addTaskToPatientSheet(task) {
             <div class="patient-task-description">${task.description}</div>
         </div>
         <img src="${task.image}" alt="${task.name}">
-        <button class="remove-task" onclick="this.parentElement.remove(); insertLetterheadIntoTasks();">×</button>
+        <button class="remove-task" onclick="removePatientTask(this)">×</button>
     `;
     
     patientTasks.appendChild(taskElement);
     insertLetterheadIntoTasks(); // Refresh letterheads
+}
+
+function removePatientTask(button) {
+    button.parentElement.remove();
+    insertLetterheadIntoTasks();
+    
+    // Show empty state if no tasks remain
+    const patientTasks = document.getElementById('patientTasks');
+    const tasks = patientTasks.querySelectorAll('.patient-task');
+    if (tasks.length === 0) {
+        const emptyState = document.createElement('div');
+        emptyState.className = 'empty-state';
+        emptyState.textContent = 'Drag items here from the library to build your sheet';
+        patientTasks.appendChild(emptyState);
+    }
 }
 
 init();
