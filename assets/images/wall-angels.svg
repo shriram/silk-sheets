@@ -1,0 +1,13 @@
+<!-- filepath: /Users/sk/Downloads/Code/SilkApp/physio-task-sheet/src/assets/images/wall-angels.svg -->
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="200" height="200" fill="#f1f8e9"/>
+    <rect x="75" y="40" width="50" height="140" rx="3" fill="#dcedc8" opacity="0.7"/>
+    <circle cx="100" cy="65" r="16" fill="#558b2f"/>
+    <rect x="87" y="81" width="26" height="45" rx="4" fill="#689f38"/>
+    <line x1="87" y1="88" x2="60" y2="70" stroke="#689f38" stroke-width="9" stroke-linecap="round"/>
+    <line x1="113" y1="88" x2="140" y2="70" stroke="#689f38" stroke-width="9" stroke-linecap="round"/>
+    <line x1="94" y1="126" x2="94" y2="165" stroke="#689f38" stroke-width="9" stroke-linecap="round"/>
+    <line x1="106" y1="126" x2="106" y2="165" stroke="#689f38" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 60 70 L 55 60" stroke="#7cb342" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 140 70 L 145 60" stroke="#7cb342" stroke-width="6" stroke-linecap="round"/>
+</svg>

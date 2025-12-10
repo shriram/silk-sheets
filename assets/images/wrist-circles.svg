@@ -1,0 +1,14 @@
+<!-- filepath: /Users/sk/Downloads/Code/SilkApp/physio-task-sheet/src/assets/images/wrist-circles.svg -->
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="200" height="200" fill="#ede7f6"/>
+    <circle cx="100" cy="55" r="17" fill="#4a148c"/>
+    <rect x="86" y="72" width="28" height="35" rx="4" fill="#6a1b9a"/>
+    <line x1="86" y1="85" x2="45" y2="100" stroke="#6a1b9a" stroke-width="9" stroke-linecap="round"/>
+    <line x1="114" y1="85" x2="155" y2="100" stroke="#6a1b9a" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="45" cy="100" r="3" fill="#8e24aa"/>
+    <circle cx="155" cy="100" r="3" fill="#8e24aa"/>
+    <path d="M 40 95 Q 35 100 40 105 Q 45 110 50 105 Q 55 100 50 95 Q 45 90 40 95" stroke="#ab47bc" stroke-width="3" fill="none"/>
+    <path d="M 150 95 Q 145 100 150 105 Q 155 110 160 105 Q 165 100 160 95 Q 155 90 150 95" stroke="#ab47bc" stroke-width="3" fill="none"/>
+    <line x1="93" y1="107" x2="93" y2="145" stroke="#6a1b9a" stroke-width="9" stroke-linecap="round"/>
+    <line x1="107" y1="107" x2="107" y2="145" stroke="#6a1b9a" stroke-width="9" stroke-linecap="round"/>
+</svg>

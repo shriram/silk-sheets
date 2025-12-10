@@ -1,0 +1,13 @@
+<!-- filepath: /Users/sk/Downloads/Code/SilkApp/physio-task-sheet/src/assets/images/trunk-rotation.svg -->
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="200" height="200" fill="#e8eaf6"/>
+    <circle cx="95" cy="55" r="17" fill="#3949ab"/>
+    <rect x="82" y="72" width="26" height="48" rx="4" fill="#3f51b5"/>
+    <line x1="82" y1="85" x2="55" y2="95" stroke="#3f51b5" stroke-width="9" stroke-linecap="round"/>
+    <line x1="108" y1="85" x2="135" y2="75" stroke="#3f51b5" stroke-width="9" stroke-linecap="round"/>
+    <line x1="89" y1="120" x2="85" y2="165" stroke="#3f51b5" stroke-width="9" stroke-linecap="round"/>
+    <line x1="101" y1="120" x2="105" y2="165" stroke="#3f51b5" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 110 60 Q 130 60 140 70" stroke="#5c6bc0" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M 140 70 L 135 65 L 138 73" fill="#7986cb"/>
+    <rect x="60" y="110" width="55" height="12" rx="3" fill="#9fa8da" opacity="0.6"/>
+</svg>

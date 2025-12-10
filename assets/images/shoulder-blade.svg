@@ -1,0 +1,13 @@
+<!-- filepath: /Users/sk/Downloads/Code/SilkApp/physio-task-sheet/src/assets/images/shoulder-blade.svg -->
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="200" height="200" fill="#e0f2f1"/>
+    <circle cx="100" cy="50" r="18" fill="#00695c"/>
+    <rect x="84" y="68" width="32" height="55" rx="5" fill="#00897b"/>
+    <line x1="84" y1="80" x2="55" y2="95" stroke="#00897b" stroke-width="10" stroke-linecap="round"/>
+    <line x1="116" y1="80" x2="145" y2="95" stroke="#00897b" stroke-width="10" stroke-linecap="round"/>
+    <line x1="92" y1="123" x2="92" y2="170" stroke="#00897b" stroke-width="9" stroke-linecap="round"/>
+    <line x1="108" y1="123" x2="108" y2="170" stroke="#00897b" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 55 95 L 60 85" stroke="#26a69a" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 145 95 L 140 85" stroke="#26a69a" stroke-width="6" stroke-linecap="round"/>
+    <ellipse cx="100" cy="85" rx="18" ry="12" fill="#4db6ac" opacity="0.5"/>
+</svg>

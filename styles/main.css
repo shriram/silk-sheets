@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #a8d8ea 0%, #d4a5e0 100%);
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.task-library {
+    flex: 0 0 380px;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.task-library h2 {
+    margin-bottom: 20px;
+    color: #2d3748;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#search {
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+#search:focus {
+    outline: none;
+    border-color: #a8d8ea;
+    box-shadow: 0 0 0 3px rgba(168, 216, 234, 0.2);
+}
+
+.task-list {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 8px;
+}
+
+.task-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.task-list::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 4px;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: move;
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.task-item:hover {
+    background: #f7fafc;
+    border-color: #a8d8ea;
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(168, 216, 234, 0.2);
+}
+
+.task-item img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+}
+
+.task-item-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: #2d3748;
+}
+
+.patient-zone {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.patient-zone h2 {
+    margin-bottom: 20px;
+    color: #2d3748;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.patient-tasks {
+    flex: 1;
+    border: 3px dashed #cbd5e0;
+    border-radius: 12px;
+    padding: 24px;
+    overflow-y: auto;
+    min-height: 200px;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+}
+
+.patient-tasks::-webkit-scrollbar {
+    width: 10px;
+}
+
+.patient-tasks::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 5px;
+}
+
+.patient-tasks::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 5px;
+}
+
+.patient-tasks::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+.patient-tasks.drag-over {
+    background: linear-gradient(135deg, #e7f5fe 0%, #f5e7fe 100%);
+    border-color: #a8d8ea;
+    border-width: 3px;
+    box-shadow: inset 0 0 20px rgba(168, 216, 234, 0.15);
+}
+
+.patient-task {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    margin-bottom: 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    background: white;
+    page-break-inside: avoid;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease;
+}
+
+.patient-task:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.patient-task-content {
+    flex: 1;
+}
+
+.patient-task h3 {
+    margin-bottom: 12px;
+    color: #1a202c;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.patient-task-description {
+    color: #4a5568;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.patient-task img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+    border: 3px solid #e2e8f0;
+}
+
+.remove-task {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(135deg, #ffb3ba 0%, #ff9aa2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    box-shadow: 0 2px 8px rgba(255, 179, 186, 0.4);
+    transition: all 0.2s ease;
+}
+
+.remove-task:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(255, 179, 186, 0.5);
+}
+
+#printButton {
+    margin-top: 20px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #a8d8ea 0%, #d4a5e0 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(168, 216, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+#printButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(168, 216, 234, 0.4);
+}
+
+#printButton:active {
+    transform: translateY(0);
+}
+
+@media print {
+    body {
+        margin: 0;
+        padding: 10px;
+        background: white;
+    }
+    
+    .container {
+        display: block;
+        height: auto;
+        padding: 0;
+        box-shadow: none;
+    }
+    
+    .task-library {
+        display: none;
+    }
+    
+    .patient-zone {
+        box-shadow: none;
+        padding: 0;
+    }
+    
+    .patient-zone h2 {
+        margin-bottom: 12px;
+        font-size: 20px;
+    }
+    
+    .patient-tasks {
+        border: none;
+        padding: 0;
+        background: white;
+    }
+    
+    .patient-task {
+        page-break-inside: avoid;
+        margin-bottom: 12px;
+        padding: 12px;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        gap: 12px;
+    }
+    
+    .patient-task h3 {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    
+    .patient-task-description {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    
+    .patient-task img {
+        width: 120px;
+        height: 120px;
+        border-width: 1px;
+    }
+    
+    .remove-task {
+        display: none;
+    }
+    
+    #printButton {
+        display: none;
+    }
+}

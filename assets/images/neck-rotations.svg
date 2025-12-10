@@ -1,0 +1,14 @@
+<!-- filepath: /Users/sk/Downloads/Code/SilkApp/physio-task-sheet/src/assets/images/neck-rotations.svg -->
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="200" height="200" fill="#fce4ec"/>
+    <circle cx="100" cy="60" r="20" fill="#c2185b"/>
+    <ellipse cx="100" cy="115" rx="32" ry="42" fill="#d81b60"/>
+    <line x1="68" y1="105" x2="40" y2="125" stroke="#d81b60" stroke-width="9" stroke-linecap="round"/>
+    <line x1="132" y1="105" x2="160" y2="125" stroke="#d81b60" stroke-width="9" stroke-linecap="round"/>
+    <line x1="90" y1="157" x2="85" y2="185" stroke="#d81b60" stroke-width="10" stroke-linecap="round"/>
+    <line x1="110" y1="157" x2="115" y2="185" stroke="#d81b60" stroke-width="10" stroke-linecap="round"/>
+    <path d="M 85 55 Q 70 45 65 35" stroke="#ec407a" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 65 35 L 60 30 L 67 32" fill="#f06292"/>
+    <circle cx="92" cy="57" r="3" fill="#fff"/>
+    <circle cx="108" cy="57" r="3" fill="#fff"/>
+</svg>
