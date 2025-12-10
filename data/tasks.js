@@ -88,5 +88,11 @@ const TASKS_DATA = [
     "id" : "task-1765386583654",
     "image" : "assets\/images\/task-1765386583654.png",
     "name" : "S 4"
+  },
+  {
+    "description" : "some more",
+    "id" : "task-1765392421110",
+    "image" : "assets\/images\/task-1765392421110.png",
+    "name" : "S 8"
   }
 ];

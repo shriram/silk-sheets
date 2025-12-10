@@ -133,4 +133,49 @@ class TaskManager: ObservableObject {
     func generateTaskId() -> String {
         return "task-\(Int(Date().timeIntervalSince1970 * 1000))"
     }
+    
+    // MARK: - Letterhead Management
+    
+    private var letterheadPath: String {
+        return (imagesDirectory as NSString).appendingPathComponent("letterhead.png")
+    }
+    
+    func hasLetterhead() -> Bool {
+        return FileManager.default.fileExists(atPath: letterheadPath)
+    }
+    
+    func loadLetterhead() -> NSImage? {
+        if hasLetterhead() {
+            return NSImage(contentsOfFile: letterheadPath)
+        }
+        return nil
+    }
+    
+    func saveLetterhead(_ image: NSImage) {
+        // Save letterhead at full width (e.g., 800px wide) instead of 200x200
+        let targetWidth: CGFloat = 800
+        let aspectRatio = image.size.height / image.size.width
+        let targetHeight = targetWidth * aspectRatio
+        
+        let resized = resizeImage(image, targetSize: NSSize(width: targetWidth, height: targetHeight))
+        
+        // Convert to PNG
+        guard let tiffData = resized.tiffRepresentation,
+              let bitmap = NSBitmapImageRep(data: tiffData),
+              let pngData = bitmap.representation(using: .png, properties: [:]) else {
+            return
+        }
+        
+        // Save to file
+        do {
+            try FileManager.default.createDirectory(atPath: imagesDirectory, withIntermediateDirectories: true, attributes: nil)
+            try pngData.write(to: URL(fileURLWithPath: letterheadPath))
+        } catch {
+            print("Error saving letterhead: \(error)")
+        }
+    }
+    
+    func deleteLetterhead() {
+        try? FileManager.default.removeItem(atPath: letterheadPath)
+    }
 }

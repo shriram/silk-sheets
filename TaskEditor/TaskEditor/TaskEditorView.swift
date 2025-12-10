@@ -297,3 +297,81 @@ struct ImageDropZone: View {
         }
     }
 }
+
+// MARK: - Letterhead Editor
+
+struct LetterheadEditorView: View {
+    let taskManager: TaskManager
+    let onClose: () -> Void
+    let onSave: () -> Void
+    let onDeleteRequest: () -> Void
+    
+    @State private var image: NSImage?
+    @State private var isDragging: Bool = false
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            // Header
+            HStack {
+                Text("Letterhead")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                Spacer()
+                Button("Done") {
+                    onClose()
+                }
+            }
+            .padding()
+            .background(Color(NSColor.controlBackgroundColor))
+            
+            // Scrollable content
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("Upload an image to appear at the top of every printed page. Leave empty for no letterhead.")
+                        .foregroundColor(.secondary)
+                    
+                    // Image Upload
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Letterhead Image")
+                            .font(.headline)
+                        
+                        ImageDropZone(
+                            image: $image,
+                            isDragging: $isDragging,
+                            onImageSelected: { newImage in
+                                image = newImage
+                            }
+                        )
+                    }
+                }
+                .padding(20)
+            }
+            
+            // Action Buttons
+            Divider()
+            HStack(spacing: 12) {
+                if taskManager.hasLetterhead() {
+                    Button("Remove Letterhead", role: .destructive) {
+                        onDeleteRequest()
+                    }
+                }
+                
+                Spacer()
+                
+                Button("Save") {
+                    if let image = image {
+                        taskManager.saveLetterhead(image)
+                        onSave()
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(image == nil)
+            }
+            .padding()
+            .background(Color(NSColor.controlBackgroundColor))
+        }
+        .onAppear {
+            image = taskManager.loadLetterhead()
+        }
+    }
+}

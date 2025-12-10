@@ -1,6 +1,6 @@
 # TaskEditor
 
-Clean, native SwiftUI macOS application for editing the task library.
+Clean, native SwiftUI macOS application for editing the task library and letterhead.
 
 ## Building & Running
 
@@ -16,7 +16,8 @@ Clean, native SwiftUI macOS application for editing the task library.
 
 ## Features
 
-- ✅ View all tasks in a scrollable list
+### Task Editing
+- ✅ View all tasks in a scrollable, alphabetically sorted list
 - ✅ Search/filter tasks by name
 - ✅ Create new tasks
 - ✅ Edit existing tasks
@@ -24,26 +25,35 @@ Clean, native SwiftUI macOS application for editing the task library.
 - ✅ Upload images via:
   - Drag & drop
   - File picker
-  - Paste (Cmd+V)
-- ✅ Auto-resize images to 200x200px
+  - Paste from clipboard button
+- ✅ Auto-resize task images to 200x200px
 - ✅ Auto-generate task IDs
 - ✅ Manual save with Save button
 - ✅ Clear form for new tasks
 
+### Letterhead Editing
+- ✅ Add custom letterhead image (e.g., clinic logo)
+- ✅ Appears at top of all printed sheets
+- ✅ Same image upload methods (drag, paste, file picker)
+- ✅ Auto-resize to 800px width (aspect-fit height)
+- ✅ Remove letterhead with confirmation dialog
+- ✅ Access via document icon in header
+
 ## Architecture
 
 - Pure SwiftUI (no WebView)
-- ~400 lines of clean Swift code
+- ~500 lines of clean Swift code
 - Direct file I/O
 - Relative path discovery from app location
 - Standard macOS behaviors
+- Two editing modes: Tasks and Letterhead
 
 ## Files
 
 - `TaskEditorApp.swift` - App entry point
-- `ContentView.swift` - Main window with task list and editor
-- `TaskEditorView.swift` - Task form with image handling
-- `TaskManager.swift` - File operations (read/write tasks.js, images)
+- `ContentView.swift` - Main window with task list, editor, and letterhead editor
+- `TaskEditorView.swift` - Task form and letterhead form with image handling
+- `TaskManager.swift` - File operations (read/write tasks.js, images, letterhead)
 - `Models.swift` - Data structures
 
 ## Data Format

@@ -5,6 +5,42 @@ async function init() {
     await taskManager.loadTasks();
     renderTaskList();
     setupEventListeners();
+    checkForLetterhead();
+}
+
+function checkForLetterhead() {
+    // Check if letterhead exists (with cache-busting)
+    const img = new Image();
+    img.src = 'assets/images/letterhead.png?t=' + new Date().getTime();
+    img.onload = function() {
+        // Letterhead exists, enable it
+        document.body.classList.add('has-letterhead');
+        insertLetterheadIntoTasks();
+        console.log('Letterhead loaded successfully');
+    };
+    img.onerror = function() {
+        // No letterhead, remove the class if it exists
+        document.body.classList.remove('has-letterhead');
+        console.log('No letterhead found');
+    };
+}
+
+function insertLetterheadIntoTasks() {
+    if (!document.body.classList.contains('has-letterhead')) {
+        return;
+    }
+    
+    const patientTasks = document.getElementById('patientTasks');
+    
+    // Remove existing letterheads first
+    patientTasks.querySelectorAll('.letterhead').forEach(lh => lh.remove());
+    
+    // Insert letterhead at the top (only once)
+    const letterheadImg = document.createElement('img');
+    letterheadImg.src = 'assets/images/letterhead.png';
+    letterheadImg.className = 'letterhead';
+    letterheadImg.alt = 'Letterhead';
+    patientTasks.insertBefore(letterheadImg, patientTasks.firstChild);
 }
 
 function renderTaskList() {
@@ -83,10 +119,11 @@ function addTaskToPatientSheet(task) {
             <div class="patient-task-description">${task.description}</div>
         </div>
         <img src="${task.image}" alt="${task.name}">
-        <button class="remove-task" onclick="this.parentElement.remove()">×</button>
+        <button class="remove-task" onclick="this.parentElement.remove(); insertLetterheadIntoTasks();">×</button>
     `;
     
     patientTasks.appendChild(taskElement);
+    insertLetterheadIntoTasks(); // Refresh letterheads
 }
 
 init();

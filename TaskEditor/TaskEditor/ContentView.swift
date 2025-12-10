@@ -8,6 +8,8 @@ struct ContentView: View {
     @State private var showingDeleteAlert = false
     @State private var taskToDelete: Task?
     @State private var showingSaveSuccess = false
+    @State private var showingLetterhead = false
+    @State private var showingDeleteLetterheadAlert = false
     
     var filteredTasks: [Task] {
         let tasks = searchText.isEmpty ? taskManager.tasks : taskManager.tasks.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
@@ -24,6 +26,15 @@ struct ContentView: View {
                         .font(.title2)
                         .fontWeight(.semibold)
                     Spacer()
+                    Button(action: {
+                        showingLetterhead = true
+                        selectedTask = nil
+                    }) {
+                        Image(systemName: "doc.text.image")
+                            .font(.title3)
+                    }
+                    .buttonStyle(.plain)
+                    .help("Edit Letterhead")
                 }
                 .padding()
                 .background(Color(NSColor.controlBackgroundColor))
@@ -71,21 +82,38 @@ struct ContentView: View {
             }
             .frame(minWidth: 300, maxWidth: 400)
             
-            // Right: Task Editor
-            TaskEditorView(
-                task: $selectedTask,
-                taskManager: taskManager,
-                onSave: {
-                    showingSaveSuccess = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        showingSaveSuccess = false
+            if showingLetterhead {
+                LetterheadEditorView(
+                    taskManager: taskManager,
+                    onClose: {
+                        showingLetterhead = false
+                    },
+                    onSave: {
+                        showingSaveSuccess = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            showingSaveSuccess = false
+                        }
+                    },
+                    onDeleteRequest: {
+                        showingDeleteLetterheadAlert = true
                     }
-                },
-                onDelete: { task in
-                    taskToDelete = task
-                    showingDeleteAlert = true
-                }
-            )
+                )
+            } else {
+                TaskEditorView(
+                    task: $selectedTask,
+                    taskManager: taskManager,
+                    onSave: {
+                        showingSaveSuccess = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            showingSaveSuccess = false
+                        }
+                    },
+                    onDelete: { task in
+                        taskToDelete = task
+                        showingDeleteAlert = true
+                    }
+                )
+            }
         }
         .frame(minWidth: 1000, minHeight: 600)
         .onAppear {
@@ -101,6 +129,19 @@ struct ContentView: View {
             }
         } message: { task in
             Text("Are you sure you want to delete '\(task.name)'? This cannot be undone.")
+        }
+        .alert("Remove Letterhead", isPresented: $showingDeleteLetterheadAlert) {
+            Button("Cancel", role: .cancel) { }
+            Button("Remove", role: .destructive) {
+                taskManager.deleteLetterhead()
+                showingLetterhead = false  // Close the letterhead editor
+                showingSaveSuccess = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    showingSaveSuccess = false
+                }
+            }
+        } message: {
+            Text("Are you sure you want to remove the letterhead? This cannot be undone.")
         }
         .overlay(alignment: .top) {
             if showingSaveSuccess {

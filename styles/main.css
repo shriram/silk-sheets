@@ -110,6 +110,10 @@ body {
     color: #2d3748;
 }
 
+.letterhead {
+    display: none; /* Hidden in screen view, shown in print */
+}
+
 .patient-zone {
     flex: 1;
     display: flex;
@@ -259,6 +263,17 @@ body {
         background: white;
     }
     
+    /* Letterhead styling */
+    .letterhead {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        margin: 0 auto 20px;
+        display: block;
+        page-break-after: avoid;
+        border-radius: 0;
+    }
+    
     .container {
         display: block;
         height: auto;
@@ -282,6 +297,7 @@ body {
     
     .patient-tasks {
         border: none;
+        border-radius: 0;
         padding: 0;
         background: white;
     }
