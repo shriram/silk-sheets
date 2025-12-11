@@ -31,7 +31,7 @@ Native macOS application for managing the task library:
 - Search and filter tasks
 - Simple, non-technical interface
 
-**Usage**: Open `TaskEditor.xcodeproj` in Xcode and run, or use exported .app
+**Usage**: Double-click `TaskEditor.app` to launch (no installation required)
 
 ## Features
 
@@ -56,6 +56,8 @@ Native macOS application for managing the task library:
 ```
 silk-sheets/
 ├── taskflow.html          # Main web app
+├── TaskEditor/            # Task editor app (for end users)
+│   └── TaskEditor.app    # Double-click to run
 ├── data/
 │   └── tasks.js          # Task library (JSON in JS file)
 ├── assets/
@@ -67,15 +69,26 @@ silk-sheets/
 │   └── taskManager.js   # Task management
 ├── styles/
 │   └── main.css         # Styling
-└── TaskEditor/          # Native macOS editor
+└── TaskEditorSource/     # Source code (for developers)
     └── TaskEditor.xcodeproj
 ```
 
 ## Getting Started
 
-1. **Edit tasks**: Open and run `TaskEditor/TaskEditor.xcodeproj` in Xcode
+1. **Edit tasks**: Double-click `TaskEditor.app` (no Xcode needed)
 2. **Create sheets**: Open `taskflow.html` in a web browser
 3. **Print**: Use browser print (Cmd+P) to save as PDF or print
+
+## For Developers
+
+To rebuild the TaskEditor app from source:
+
+1. Open `TaskEditorSource/TaskEditor.xcodeproj` in Xcode
+2. Select Product → Archive
+3. Click "Distribute App"
+4. Choose "Copy App"
+5. Save the exported app to the `TaskEditor/` folder
+6. The app is now ready to distribute to non-technical users
 
 ## Design Principles
 
