@@ -10,6 +10,7 @@ dist/
 silk-sheets.zip
 
 # Built application (build artifact, not source)
+TaskEditor
 TaskEditor/*.app
 
 # macOS
