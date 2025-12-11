@@ -58,35 +58,5 @@ const TASKS_DATA = [
     "id" : "10",
     "image" : "assets\/images\/wrist-circles.svg",
     "name" : "Wrist Circles"
-  },
-  {
-    "description" : "New description of S1.",
-    "id" : "11",
-    "image" : "assets\/images\/11.png",
-    "name" : "S 1"
-  },
-  {
-    "description" : "some other text?\n\nmore here\n\ndoes this continue? *can* I use _Markdown_?",
-    "id" : "12",
-    "image" : "assets\/images\/12.png",
-    "name" : "S 2"
-  },
-  {
-    "description" : "third text",
-    "id" : "13",
-    "image" : "assets\/images\/13.png",
-    "name" : "S 3"
-  },
-  {
-    "description" : "¡hola! Jørgan",
-    "id" : "task-1765385936114",
-    "image" : "assets\/images\/task-1765385936114.png",
-    "name" : "S 6"
-  },
-  {
-    "description" : "hey!",
-    "id" : "task-1765386583654",
-    "image" : "assets\/images\/task-1765386583654.png",
-    "name" : "S 4"
   }
 ];
