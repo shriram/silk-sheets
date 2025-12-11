@@ -60,7 +60,7 @@ const TASKS_DATA = [
     "name" : "Wrist Circles"
   },
   {
-    "description" : "I have no idea.",
+    "description" : "New description of S1.",
     "id" : "11",
     "image" : "assets\/images\/11.png",
     "name" : "S 1"
@@ -88,11 +88,5 @@ const TASKS_DATA = [
     "id" : "task-1765386583654",
     "image" : "assets\/images\/task-1765386583654.png",
     "name" : "S 4"
-  },
-  {
-    "description" : "some more",
-    "id" : "task-1765392421110",
-    "image" : "assets\/images\/task-1765392421110.png",
-    "name" : "S 8"
   }
 ];
