@@ -9,11 +9,10 @@ TaskEditorSource/TaskEditor.xcodeproj/project.xcworkspace/xcuserdata/
 dist/
 silk-sheets.zip
 
+# Built application (build artifact, not source)
+TaskEditor/*.app
+
 # macOS
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# Keep the exported app folder
-!TaskEditor/
-!TaskEditor/*.app
