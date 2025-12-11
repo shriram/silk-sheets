@@ -1,0 +1,19 @@
+# Xcode build artifacts
+TaskEditorSource/DerivedData/
+TaskEditorSource/build/
+TaskEditorSource/.DS_Store
+TaskEditorSource/TaskEditor.xcodeproj/xcuserdata/
+TaskEditorSource/TaskEditor.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Distribution artifacts
+dist/
+silk-sheets.zip
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Keep the exported app folder
+!TaskEditor/
+!TaskEditor/*.app
