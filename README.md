@@ -33,6 +33,14 @@ Native macOS application for managing the task library:
 
 **Usage**: Double-click `TaskEditor.app` to launch (no installation required)
 
+**First Launch (macOS 15+)**: The app is unsigned, so macOS will block it. To allow:
+1. Try to open the app (it will be blocked)
+2. Open System Settings → Privacy & Security
+3. Scroll to Security section
+4. Click "Open Anyway" next to the TaskEditor message
+5. Confirm by clicking "Open"
+6. After this one time, it opens normally
+
 ## Features
 
 ### Taskflow Creator
