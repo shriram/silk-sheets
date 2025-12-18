@@ -9,11 +9,12 @@ Non-technical user who wants a simple, reliable tool to manage exercise tasks an
 ## Key Design Decisions
 
 ### File Location
-- App uses source file location (`#file`) to find repository root
-- Works both when running from Xcode (DerivedData) and when exported
-- **Always uses relative paths** from source files in `TaskEditor/TaskEditor/`
-- Navigates up 3 levels to find `data/tasks.js` and `assets/images/`
+- App uses bundle location (`Bundle.main.bundleURL`) to find repository root at runtime
+- Works when the entire folder is moved anywhere on the filesystem
+- **Always uses relative paths** from the app bundle location
+- Navigates up 1 level from `TaskEditor.app` to find `data/tasks.js` and `assets/images/` as siblings
 - No sandboxing - app has full file system access to read/write files
+- Distribution requirement: entire `silk-sheets/` folder must be kept together with app as sibling to data/assets
 
 ### Task IDs
 - **Auto-generated** using timestamp-based unique IDs
@@ -59,7 +60,7 @@ Non-technical user who wants a simple, reliable tool to manage exercise tasks an
 - **Pure SwiftUI** - no WebView, no HTML/JS bridge
 - **~500 lines of Swift** across 5 files
 - **Direct file I/O** - no async bridge complexity
-- **Source file path discovery** using `#file` compile-time constant
+- **Runtime bundle path discovery** using `Bundle.main.bundleURL` for portability
 - **Two editing modes**: Task editor and Letterhead editor (mutually exclusive views)
 - Format: `const TASKS_DATA = [...];`
 - Each task: `{ "id": "...", "name": "...", "image": "assets/images/...", "description": "..." }`
@@ -70,7 +71,7 @@ Non-technical user who wants a simple, reliable tool to manage exercise tasks an
 - **Pure SwiftUI** - no WebView, no HTML/JS bridge
 - **~400 lines of Swift** across 5 files
 - **Direct file I/O** - no async bridge complexity
-- **Source file path discovery** using `#file` compile-time constant
+- **Runtime bundle path discovery** using `Bundle.main.bundleURL` for portability
 
 ## Launch Method (Current)
 - Open project in Xcode and Run (Cmd+R)

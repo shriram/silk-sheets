@@ -10,9 +10,10 @@ Clean, native SwiftUI macOS application for editing the task library and letterh
 
 ## How to Use
 
-1. Place the app inside your silk-sheets folder (or its parent folder)
+1. Keep the app as a sibling to `data/` and `assets/` folders in the `silk-sheets/` structure
 2. Double-click the app to launch (or run from Xcode)
-3. The app will automatically find `data/tasks.js` and `assets/images/`
+3. The app will automatically find `data/tasks.js` and `assets/images/` using its bundle location
+4. The entire folder can be moved anywhere - paths are resolved at runtime
 
 ## Features
 
@@ -44,7 +45,7 @@ Clean, native SwiftUI macOS application for editing the task library and letterh
 - Pure SwiftUI (no WebView)
 - ~500 lines of clean Swift code
 - Direct file I/O
-- Relative path discovery from app location
+- Runtime path discovery using `Bundle.main.bundleURL` for portability
 - Standard macOS behaviors
 - Two editing modes: Tasks and Letterhead
 

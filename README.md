@@ -87,6 +87,8 @@ silk-sheets/
 2. **Create sheets**: Open `taskflow.html` in a web browser
 3. **Print**: Use browser print (Cmd+P) to save as PDF or print
 
+**Important**: Keep the entire `silk-sheets/` folder together when moving or distributing. The app, data files, and web app must remain in their sibling structure.
+
 ## For Developers
 
 To rebuild the TaskEditor app from source:
@@ -95,8 +97,8 @@ To rebuild the TaskEditor app from source:
 2. Select Product → Archive
 3. Click "Distribute App"
 4. Choose "Copy App"
-5. Save the exported app to the `TaskEditor/` folder
-6. The app is now ready to distribute to non-technical users
+5. Save the exported app as `TaskEditor.app` in the root `silk-sheets/` folder
+6. The entire folder can now be distributed - the app finds its data at runtime using bundle-relative paths
 
 ## Design Principles
 

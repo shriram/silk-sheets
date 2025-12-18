@@ -9,19 +9,18 @@ class TaskManager: ObservableObject {
     private let imagesDirectory: String
     
     init() {
-        // Use the source file location to find the repository root
-        // This works both when running from Xcode and when exported
-        let sourceFileURL = URL(fileURLWithPath: #file)
-        // #file gives us: /Users/sk/Desktop/r/sk/silk-sheets/TaskEditor2/TaskEditor2/TaskManager.swift
-        // Go up 3 levels: TaskManager.swift -> TaskEditor2 -> TaskEditor2 -> silk-sheets
-        let repoURL = sourceFileURL
-            .deletingLastPathComponent()  // Remove TaskManager.swift
-            .deletingLastPathComponent()  // Remove TaskEditor2
-            .deletingLastPathComponent()  // Remove TaskEditor2
-        
+        // Use the app bundle location to find the repository root
+        // Bundle.main.bundleURL gives us the .app location at runtime
+        // Structure: silk-sheets/TaskEditor.app (bundle is here)
+        //           silk-sheets/data/tasks.js (data is sibling to bundle)
+        //           silk-sheets/assets/images/ (assets is sibling to bundle)
+        let bundleURL = Bundle.main.bundleURL
+        let repoURL = bundleURL.deletingLastPathComponent()  // Go up from TaskEditor.app to silk-sheets/
+
         tasksFilePath = repoURL.appendingPathComponent("data").appendingPathComponent("tasks.js").path
         imagesDirectory = repoURL.appendingPathComponent("assets").appendingPathComponent("images").path
-        
+
+        print("Bundle location: \(bundleURL.path)")
         print("Repository root: \(repoURL.path)")
         print("Tasks file: \(tasksFilePath)")
         print("Images dir: \(imagesDirectory)")
