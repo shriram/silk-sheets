@@ -2,7 +2,7 @@ import Foundation
 import AppKit
 
 class TaskManager: ObservableObject {
-    @Published var tasks: [Task] = []
+    @Published var tasks: [TaskItem] = []
     @Published var errorMessage: String?
     
     private let tasksFilePath: String
@@ -11,11 +11,12 @@ class TaskManager: ObservableObject {
     init() {
         // Use the app bundle location to find the repository root
         // Bundle.main.bundleURL gives us the .app location at runtime
-        // Structure: silk-sheets/TaskEditor.app (bundle is here)
-        //           silk-sheets/data/tasks.js (data is sibling to bundle)
-        //           silk-sheets/assets/images/ (assets is sibling to bundle)
+        // Structure: silk-sheets/TaskEditor/TaskEditor.app (bundle is here)
+        //           silk-sheets/data/tasks.js (data is sibling to TaskEditor folder)
+        //           silk-sheets/assets/images/ (assets is sibling to TaskEditor folder)
         let bundleURL = Bundle.main.bundleURL
-        let repoURL = bundleURL.deletingLastPathComponent()  // Go up from TaskEditor.app to silk-sheets/
+        let repoURL = bundleURL.deletingLastPathComponent()  // Go up from TaskEditor.app to TaskEditor/
+                               .deletingLastPathComponent()  // Go up from TaskEditor/ to silk-sheets/
 
         tasksFilePath = repoURL.appendingPathComponent("data").appendingPathComponent("tasks.js").path
         imagesDirectory = repoURL.appendingPathComponent("assets").appendingPathComponent("images").path
@@ -38,7 +39,7 @@ class TaskManager: ObservableObject {
                 
                 if let jsonData = jsonString.data(using: .utf8) {
                     let decoder = JSONDecoder()
-                    tasks = try decoder.decode([Task].self, from: jsonData)
+                    tasks = try decoder.decode([TaskItem].self, from: jsonData)
                     errorMessage = nil
                 }
             }
@@ -99,7 +100,7 @@ class TaskManager: ObservableObject {
         try? FileManager.default.removeItem(atPath: fullPath)
     }
     
-    func deleteTask(_ task: Task) {
+    func deleteTask(_ task: TaskItem) {
         deleteImage(task.image)
         tasks.removeAll { $0.id == task.id }
         saveTasks()  // Save to file after deleting
