@@ -10,19 +10,19 @@ class TaskManager: ObservableObject {
     
     init() {
         // Use the app bundle location to find the repository root
-        // Bundle.main.bundleURL gives us the .app location at runtime
+        // Bundle.main.bundlePath gives us the actual .app location at runtime (resolves symlinks)
         // Structure: silk-sheets/TaskEditor/TaskEditor.app (bundle is here)
         //           silk-sheets/data/tasks.js (data is sibling to TaskEditor folder)
         //           silk-sheets/assets/images/ (assets is sibling to TaskEditor folder)
-        let bundleURL = Bundle.main.bundleURL
-        let repoURL = bundleURL.deletingLastPathComponent()  // Go up from TaskEditor.app to TaskEditor/
-                               .deletingLastPathComponent()  // Go up from TaskEditor/ to silk-sheets/
+        let bundlePath = Bundle.main.bundlePath
+        let repoPath = (bundlePath as NSString).deletingLastPathComponent  // Go up from TaskEditor.app to TaskEditor/
+        let repoRoot = (repoPath as NSString).deletingLastPathComponent    // Go up from TaskEditor/ to silk-sheets/
 
-        tasksFilePath = repoURL.appendingPathComponent("data").appendingPathComponent("tasks.js").path
-        imagesDirectory = repoURL.appendingPathComponent("assets").appendingPathComponent("images").path
+        tasksFilePath = ((repoRoot as NSString).appendingPathComponent("data") as NSString).appendingPathComponent("tasks.js")
+        imagesDirectory = ((repoRoot as NSString).appendingPathComponent("assets") as NSString).appendingPathComponent("images")
 
-        print("Bundle location: \(bundleURL.path)")
-        print("Repository root: \(repoURL.path)")
+        print("Bundle location: \(bundlePath)")
+        print("Repository root: \(repoRoot)")
         print("Tasks file: \(tasksFilePath)")
         print("Images dir: \(imagesDirectory)")
     }

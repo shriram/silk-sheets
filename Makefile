@@ -1,22 +1,44 @@
-.PHONY: all dist clean help
+.PHONY: all dist clean help build
 
 # Distribution settings
 DIST_NAME = silk-sheets
 DIST_DIR = dist
+XCODE_BUILD_DIR = $(HOME)/Library/Developer/Xcode/DerivedData
 
 help:
 	@echo "Silk Sheets Distribution Makefile"
 	@echo ""
-	@echo "Prerequisites:"
-	@echo "  1. Build TaskEditor in Xcode (Product → Archive)"
-	@echo "  2. Export to TaskEditor/TaskEditor.app"
+	@echo "WORKFLOW:"
+	@echo "  1. Open TaskEditorSource/TaskEditor.xcodeproj in Xcode"
+	@echo "  2. Press Cmd+B (or Product → Build)"
+	@echo "  3. Run 'make build' to copy the build to TaskEditor/"
+	@echo "  4. Run 'make dist' to create distribution zip"
 	@echo ""
-	@echo "Targets:"
-	@echo "  dist    - Create distributable zip file"
-	@echo "  clean   - Remove distribution files"
-	@echo "  help    - Show this help message"
+	@echo "  Or simply: 'make' (runs build + dist automatically)"
+	@echo ""
+	@echo "TARGETS:"
+	@echo "  make         - Build and create distribution (default)"
+	@echo "  make build   - Copy latest Xcode build to TaskEditor/ folder"
+	@echo "  make dist    - Create distributable zip file"
+	@echo "  make clean   - Remove distribution files"
+	@echo "  make help    - Show this help message"
 
-all: dist
+all: build dist
+
+# Copy latest Xcode build to TaskEditor folder
+build:
+	@echo "Finding latest TaskEditor build..."
+	@latest=$$(find $(XCODE_BUILD_DIR) -name "TaskEditor.app" -path "*/Build/Products/Debug/*" -type d -exec stat -f "%m %N" {} \; 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2-); \
+	if [ -z "$$latest" ]; then \
+		echo "Error: No TaskEditor build found in Xcode DerivedData"; \
+		echo "Please build the app in Xcode first (Cmd+B)"; \
+		exit 1; \
+	fi; \
+	echo "Found: $$latest"; \
+	echo "Copying to TaskEditor/..."; \
+	/bin/rm -rf TaskEditor/TaskEditor.app; \
+	cp -R "$$latest" TaskEditor/; \
+	echo "✓ Build copied successfully"
 
 # Create distribution zip (assumes app is already built)
 dist:

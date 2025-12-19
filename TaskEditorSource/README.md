@@ -4,9 +4,16 @@ Clean, native SwiftUI macOS application for editing the task library and letterh
 
 ## Building & Running
 
+### For Development (running in Xcode)
 1. Open `TaskEditor.xcodeproj` in Xcode
-2. Select the TaskEditor scheme
-3. Press Cmd+R to build and run
+2. Press Cmd+R to build and run
+
+### For Distribution
+1. Press Cmd+B in Xcode to build
+2. From project root, run `make build` to copy the build
+3. Run `make dist` to create distribution package
+
+Or simply run `make` from the project root after building in Xcode.
 
 ## How to Use
 

@@ -91,14 +91,18 @@ silk-sheets/
 
 ## For Developers
 
-To rebuild the TaskEditor app from source:
+### Building from Source
+
+To rebuild the TaskEditor app:
 
 1. Open `TaskEditorSource/TaskEditor.xcodeproj` in Xcode
-2. Select Product → Archive
-3. Click "Distribute App"
-4. Choose "Copy App"
-5. Save the exported app as `TaskEditor.app` in the root `silk-sheets/` folder
-6. The entire folder can now be distributed - the app finds its data at runtime using bundle-relative paths
+2. Press **Cmd+B** (or Product → Build)
+3. Run `make build` to copy the build to TaskEditor/
+4. Run `make dist` to create a distribution zip
+
+Or simply run `make` to do steps 3-4 automatically.
+
+See `CLAUDE.md` for detailed development documentation.
 
 ## Design Principles
 
